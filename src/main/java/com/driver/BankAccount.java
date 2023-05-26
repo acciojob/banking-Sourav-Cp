@@ -64,15 +64,15 @@ public class BankAccount {
 
     public void deposit(double amount) {
         //add amount to balance
-       balance = balance + amount;
+       this.balance += amount;
     }
 
     public void withdraw(double amount) throws Exception {
         // Remember to throw "Insufficient Balance" exception, if the remaining amount would be less than minimum balance
 
-        if(balance - amount >= minBalance)
+        if(this.balance - amount >= this.minBalance)
         {
-            balance = balance - amount;
+            this.balance = this.balance - amount;
         }
 
         else throw new Exception("Insufficient Balance");
