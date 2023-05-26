@@ -50,7 +50,7 @@ public class CurrentAccount extends BankAccount{
 
         if(! validating)
         {
-            if(maxCnt > tradeLicenseId.length()/2) throw new Exception("Valid License can not be generated");
+            if(maxCnt > tradeLicenseId.length()+1/2) throw new Exception("Valid License can not be generated");
         }
 
         List<Character> formingId = new ArrayList<>(tradeLicenseId.length());
@@ -77,7 +77,7 @@ public class CurrentAccount extends BankAccount{
                     cntOfChar--;
                 }
             }
-            characterIntegerMap.remove(ch);
+         //   characterIntegerMap.remove(ch);
 
         }
 
