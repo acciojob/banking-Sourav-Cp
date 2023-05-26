@@ -1,8 +1,7 @@
 package com.driver;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CurrentAccount extends BankAccount{
@@ -50,10 +49,10 @@ public class CurrentAccount extends BankAccount{
 
         if(! validating)
         {
-            if(maxCnt > tradeLicenseId.length()+1/2) throw new Exception("Valid License can not be generated");
+            if(maxCnt > (tradeLicenseId.length()+1)/2) throw new Exception("Valid License can not be generated");
         }
 
-        List<Character> formingId = new ArrayList<>(tradeLicenseId.length());
+        char[] formingId = new char[tradeLicenseId.length()];
 
         int index1 = 0;
         int index2 = 1;
@@ -61,18 +60,18 @@ public class CurrentAccount extends BankAccount{
         for(Character ch : characterIntegerMap.keySet())
         {
             int cntOfChar = characterIntegerMap.get(ch);
-            while(cntOfChar > 0 && index1 < formingId.size())
+            while(cntOfChar > 0 && index1 < formingId.length)
             {
-                formingId.add(index1,ch);
+                formingId[index1] = ch;
                 index1 += 2;
                 cntOfChar--;
             }
 
-            if(index1 >= formingId.size())
+            if(index1 >= formingId.length)
             {
-                while(cntOfChar > 0 && index2 < formingId.size())
+                while(cntOfChar > 0 && index2 < formingId.length)
                 {
-                    formingId.add(index2,ch);
+                    formingId[index2] = ch;
                     index2 += 2;
                     cntOfChar--;
                 }
@@ -82,18 +81,18 @@ public class CurrentAccount extends BankAccount{
         }
 
         StringBuilder sb = new StringBuilder();
-        for(int i=0;i<formingId.size();i++)
+        for(int i=0;i<formingId.length;i++)
         {
-            sb.append(formingId.get(i));
+            sb.append(formingId[i]);
         }
         tradeLicenseId = sb.toString();
 
     }
     public boolean checkLicence(String tradeLicenseId)
     {
-        for(int i=1;i<tradeLicenseId.length();i++)
+        for(int i=0;i<tradeLicenseId.length()-1;i++)
         {
-            if(tradeLicenseId.charAt(i) == tradeLicenseId.charAt(i-1)) return false;
+            if(tradeLicenseId.charAt(i) == tradeLicenseId.charAt(i+1)) return false;
         }
         return true;
     }
