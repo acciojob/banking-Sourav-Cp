@@ -93,7 +93,7 @@ public class CurrentAccount extends BankAccount{
     {
         for(int i=1;i<tradeLicenseId.length();i++)
         {
-            if(tradeLicenseId.charAt(i) == tradeLicenseId.charAt(i+1)) return false;
+            if(tradeLicenseId.charAt(i) == tradeLicenseId.charAt(i-1)) return false;
         }
         return true;
     }

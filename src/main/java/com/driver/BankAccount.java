@@ -43,7 +43,6 @@ public class BankAccount {
                 if(rem >= 9)
                 {
                     sb.append("9");
-                    digits--;
                     rem = rem - 9;
                 }
                 else
@@ -51,6 +50,7 @@ public class BankAccount {
                     sb.append(Integer.toString(rem));
                     rem = 0;
                 }
+                digits--;
             }
             while(digits > 0)
             {
